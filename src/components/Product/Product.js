@@ -4,11 +4,26 @@ import Button from '../Button/Button';
 import { useState } from 'react';
 
 const Product = props => {
+
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
   const prepareColorClassName = color => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   }
+  const changeColor = (color) => {
+    setCurrentColor(color)
+  }
+  const changeSize = (size) => {
+    setCurrentSize(size)
+  }
+  const getPrice = () => {
+    for (const size of props.sizes) {
+      if (size.name === currentSize) {
+        return props.basePrice + size.additionalPrice
+      }
+    }
+  }
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -20,26 +35,19 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {props.basePrice}</span>
+          <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {props.sizes.map(size => <li><button className={size.name === currentSize && styles.active} key={size} type="button">{size.name}</button></li>)}
-              {/* <li><button type="button" className={styles.active}>S</button></li>
-              <li><button type="button">M</button></li>
-              <li><button type="button">L</button></li>
-              <li><button type="button">XL</button></li> */}
+              {props.sizes.map(size => <li key={size.name}><button className={size.name === currentSize ? styles.active : ''} onClick={() => changeSize(size.name)} type="button">{size.name}</button></li>)}
             </ul>
           </div>
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              {props.colors.map(color => <li><button className={clsx(prepareColorClassName(color), color === currentColor && styles.active)} key={color} type="button"></button></li>)}
-              {/* <li><button type="button" className={clsx(styles.colorBlack, styles.active)} /></li>
-              <li><button type="button" className={clsx(styles.colorRed)} /></li>
-              <li><button type="button" className={clsx(styles.colorWhite)} /></li> */}
+              {props.colors.map(color => <li key={color}><button className={clsx(prepareColorClassName(color), color === currentColor ? styles.active : '')} onClick={() => changeColor(color)} type="button"></button></li>)}
             </ul>
           </div>
           <Button className={styles.button}>
