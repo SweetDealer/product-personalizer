@@ -16,12 +16,23 @@ const Product = props => {
   const changeSize = (size) => {
     setCurrentSize(size)
   }
+  // let price = props.basePrice
   const getPrice = () => {
     for (const size of props.sizes) {
       if (size.name === currentSize) {
         return props.basePrice + size.additionalPrice
       }
     }
+  }
+
+  const addToCart = (event) => {
+    event.preventDefault()
+    const product = {};
+    product.title = props.title;
+    product.size = currentSize;
+    product.color = currentColor;
+    product.price = getPrice();
+    console.log(product);
   }
 
   return (
@@ -50,7 +61,7 @@ const Product = props => {
               {props.colors.map(color => <li key={color}><button className={clsx(prepareColorClassName(color), color === currentColor ? styles.active : '')} onClick={() => changeColor(color)} type="button"></button></li>)}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button className={styles.button} action={(event) => addToCart(event)}>
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
