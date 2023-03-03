@@ -2,7 +2,7 @@ import styles from './ProductForm.module.scss';
 import OptionSize from '../OptionSize/OptionSize';
 import OptionColor from "../OptionColor/OptionColor";
 import Button from '../Button/Button';
-
+import PropTypes from 'prop-types';
 
 const ProductForm = props => {
 
@@ -15,5 +15,7 @@ const ProductForm = props => {
         </Button>
     </div>
 }
+
+ProductForm.propTypes = { props: PropTypes.object.isRequired };
 
 export default ProductForm;

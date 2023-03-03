@@ -1,4 +1,5 @@
 import styles from './OptionSize.module.scss';
+import PropTypes from 'prop-types';
 
 const OptionSize = props => {
     return <div className={styles.sizes}>
@@ -8,5 +9,7 @@ const OptionSize = props => {
         </ul>
     </div>
 }
+
+OptionSize.propTypes = { props: PropTypes.object.isRequired };
 
 export default OptionSize;

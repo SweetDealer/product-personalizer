@@ -1,4 +1,5 @@
 import styles from './Container.module.scss';
+import PropTypes from 'prop-types';
 
 const Container = (props) => {
     return (
@@ -7,5 +8,7 @@ const Container = (props) => {
         </div>
     );
 };
+
+Container.propTypes = { props: PropTypes.object.isRequired };
 
 export default Container;

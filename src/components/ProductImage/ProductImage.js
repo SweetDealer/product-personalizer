@@ -1,4 +1,5 @@
-import styles from './ProductImage.module.scss'
+import styles from './ProductImage.module.scss';
+import PropTypes from 'prop-types';
 
 const ProductImage = props => {
    return (<div className={styles.imageContainer}>
@@ -8,5 +9,7 @@ const ProductImage = props => {
             src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${props.color}.jpg`} />
     </div>)
 }
+
+ProductImage.propTypes = { props: PropTypes.object.isRequired };
 
 export default ProductImage;

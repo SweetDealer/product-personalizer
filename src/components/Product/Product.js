@@ -1,10 +1,8 @@
 import styles from './Product.module.scss';
-
-
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
 import ProductForm from '../ProductForm/ProductForm';
-
+import PropTypes from 'prop-types';
 
 const Product = props => {
 
@@ -42,12 +40,14 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {getPrice()}$</span>
+          <span className={styles.price}>Price: {useMemo(() => getPrice(), [currentSize])}$</span>
         </header>
         <ProductForm colors={props.colors} currentColor={currentColor} currentSize={currentSize} changeColor={changeColor} addToCart={addToCart} changeSize={changeSize} sizes={props.sizes} />
       </div>
     </article>
   )
 };
+
+Product.propTypes = { props: PropTypes.object.isRequired };
 
 export default Product;
