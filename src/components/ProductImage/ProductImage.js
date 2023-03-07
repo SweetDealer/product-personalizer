@@ -10,6 +10,10 @@ const ProductImage = props => {
     </div>)
 }
 
-ProductImage.propTypes = { props: PropTypes.object.isRequired };
+ProductImage.propTypes = {
+    title: PropTypes.string,
+    name: PropTypes.string,
+    color: PropTypes.string
+};
 
 export default ProductImage;

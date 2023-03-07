@@ -6,6 +6,10 @@ const Button = (props) => {
     return (<button className={clsx(styles.button, props.className)} onClick={props.action}>{props.children}</button>);
 };
 
-Button.propTypes = { props: PropTypes.object.isRequired };
+Button.propTypes = {
+    className: PropTypes.string,
+    action: PropTypes.func,
+    children: PropTypes.object,
+};
 
 export default Button;

@@ -16,6 +16,14 @@ const ProductForm = props => {
     </div>
 }
 
-ProductForm.propTypes = { props: PropTypes.object.isRequired };
+ProductForm.propTypes = {
+    sizes: PropTypes.array,
+    colors: PropTypes.array,
+    changeSize: PropTypes.func,
+    changeColor: PropTypes.func,
+    currentSize: PropTypes.string,
+    currentColor: PropTypes.string,
+
+};
 
 export default ProductForm;

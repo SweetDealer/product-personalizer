@@ -9,6 +9,6 @@ const Container = (props) => {
     );
 };
 
-Container.propTypes = { props: PropTypes.object.isRequired };
+Container.propTypes = { children: PropTypes.array };
 
 export default Container;

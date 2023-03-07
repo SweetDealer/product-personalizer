@@ -10,6 +10,6 @@ const OptionSize = props => {
     </div>
 }
 
-OptionSize.propTypes = { props: PropTypes.object.isRequired };
+OptionSize.propTypes = { sizes: PropTypes.array };
 
 export default OptionSize;

@@ -16,6 +16,6 @@ const OptionColor = props => {
     </div>
 }
 
-OptionColor.propTypes = { props: PropTypes.object.isRequired };
+OptionColor.propTypes = { colors: PropTypes.array.isRequired };
 
 export default OptionColor;
